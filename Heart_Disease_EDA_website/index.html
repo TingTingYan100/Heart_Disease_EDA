@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS171 - Final Project</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Neuton:300,400,400i,700,800" rel="stylesheet">
+
+    <!-- CSS libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS code -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container-fluid">
+
+
+    <div class="slides slide1">
+        <div class="col-md-12">
+            <h1><span class="h1-sub">Heart Disease Exploratory Data Analysis (EDA)</span> </h1>
+
+            <h2>A Journey With Your Own Heart
+                <svg width="200" height="20" class="long-arrow-svg" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="10" x2="180" y2="10" stroke="#94a97a" stroke-width="4"/> <!-- Shaft -->
+                <polygon points="180,0 200,10 180,20" fill="#94a97a"/> <!-- Arrowhead -->
+                </svg>
+            </h2>
+
+
+            <div class="image-row">
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Heart_anterior_exterior_view.png/250px-Heart_anterior_exterior_view.png" alt="heartpic" id="heart1">
+                    <p>Age 20</p>
+                </div>
+                <div class="arrow-container">
+                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="25" x2="50" y2="25" stroke="black" stroke-width="2"/>
+                        <polygon points="40,15 50,25 40,35" fill="black"/>
+                    </svg>
+                </div>
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Heart_anterior_exterior_view.png/250px-Heart_anterior_exterior_view.png" alt="heartpic" style="opacity: 0.8" id="heart2">
+                    <p>Age 35</p>
+                </div>
+                <div class="arrow-container">
+                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="25" x2="50" y2="25" stroke="black" stroke-width="2"/>
+                        <polygon points="40,15 50,25 40,35" fill="black"/>
+                    </svg>
+                </div>
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Heart_anterior_exterior_view.png/250px-Heart_anterior_exterior_view.png" alt="heartpic" style="opacity: 0.6" id="heart3">
+                    <p>Age 50</p>
+                </div>
+                <div class="arrow-container">
+                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="25" x2="50" y2="25" stroke="black" stroke-width="2"/>
+                        <polygon points="40,15 50,25 40,35" fill="black"/>
+                    </svg>
+                </div>
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Heart_anterior_exterior_view.png/250px-Heart_anterior_exterior_view.png" alt="heartpic" style="opacity: 0.4" id="heart4">
+                    <p>Age 65</p>
+                </div>
+            </div>
+
+            <h3><span class="h1-sub">Scroll Down</span> </h3>
+            <div class="bouncing-arrow">
+                <i class="fa fa-angle-double-down"></i>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="slides slide2">
+        <header class="slide-header">Pie Charts for Categorical Data</header>
+        <div class="piechartText">Overview of Categorical Features in this dataset: </div>
+        <div id="button-container">
+            <button id="showAllButton">Show All</button>
+        </div>
+        <div id="pieChartContainer"></div>
+    </div>
+
+    <div class="slides slide3">
+        <header class="slide-header">Scatter Plot and Histograms</header>
+        <div style="margin-bottom: 20px;">
+            <!-- Dropdown selectors for axes -->
+            <label for="xAxis">Choose Categorical Variable (x-axis):</label>
+            <select id="xAxis">
+                <option value="Gender">Gender</option>
+                <option value="ChestPain">ChestPain</option>
+                <option value="FastingBloodSugar">FastingBloodSugar</option>
+                <option value="RestingECGResults">RestingECGResults</option>
+                <option value="Exercise-InducedAngina">Exercise-InducedAngina</option>
+                <option value="SlopeofPeakExercise">SlopeofPeakExercise</option>
+                <option value="NumMajorVessels">NumMajorVessels</option>
+            </select>
+
+            <label for="yAxis">Choose Numerical Variable (y-axis):</label>
+            <select id="yAxis"  class="styled-dropdown">
+                <option value="Age">Age</option>
+                <option value="RestingBP">RestingBP</option>
+                <option value="chol">Cholesterol</option>
+                <option value="MaxHRAchieved">MaxHRAchieved</option>
+                <option value="Exercise_Induced_ST_Depression">Exercise_Induced_ST_Depression</option>
+            </select>
+        </div>
+
+
+        <div>
+            <button id="toggleMode" style="padding: 5px 10px;">Switch to Highlight Mode</button>
+            <button id="enableBrushMode" style="padding: 5px 10px;">Enable Dragging For Point Selection</button>
+            <button id="resetButton" style="padding: 5px 10px;">Reset</button>
+        </div>
+
+        <!-- Container for the scatterplot and the small visualization -->
+        <div id="scatterPlotContainer" style="display: flex; flex-direction: row; gap: 20px;">
+
+            <div id="scatterPlot" style=" width: 1000px;"></div> <!-- Scatterplot -->
+            <div id="histogram" style=" width: 600px; height: 500px;">
+                <p style="text-align: center; margin: 0;">Histogram</p>
+
+
+
+                <label for="histogramCategory">Choose Category for Histogram:</label>
+                <select id="histogramCategory">
+                    <option value="Gender">Gender</option>
+                    <option value="ChestPain">ChestPain</option>
+                    <option value="FastingBloodSugar">FastingBloodSugar</option>
+                    <option value="RestingECGResults">RestingECGResults</option>
+                    <option value="Exercise-InducedAngina">Exercise-InducedAngina</option>
+                    <option value="SlopeofPeakExercise">SlopeofPeakExercise</option>
+                    <option value="NumMajorVessels">NumMajorVessels</option>
+                    <option value="Age">Age</option>
+                    <option value="RestingBP">RestingBP</option>
+                    <option value="chol">Cholesterol</option>
+                    <option value="MaxHRAchieved">MaxHRAchieved</option>
+                    <option value="Exercise_Induced_ST_Depression">Exercise_Induced_ST_Depression</option>
+                </select>
+                <p id = "histogramErrorMessage"style="text-align: center; color: #666; font-style: italic; font-size:50px"> Please toggle to highlight mode and select a few points using the buttons above.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="slides slide4">
+        <header class="slide-header">Feature Importance</header>
+        <div id="pulsating-heart">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Heart_anterior_exterior_view.png/250px-Heart_anterior_exterior_view.png" alt="heartpic" class = "heart">
+            <div class="center-text"></div>
+        </div>
+        <div id="barchart-container">
+        </div>
+        <div id="heart-container">
+            <div class="center-text">What is the <b>LARGEST RISK FACTOR</b> for Heart Disease?</div>
+        </div>
+    </div>
+</div>
+
+<!-- Load JS libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- d3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+<!-- Visualization objects -->
+<script src="js/pieChart.js"></script>
+<script src="js/processData.js"></script>
+<script src="js/scatterPlot.js"></script>
+<script src="js/histogram.js"></script>
+<script src="js/barchart.js"></script>
+
+
+
+
+
+<!-- Load data, create visualizations -->
+<script src="js/main.js"></script>
+
+
+
+</body>
+</html>
